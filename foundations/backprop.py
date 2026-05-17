@@ -22,7 +22,7 @@ class Solution:
         
         z=np.dot(x,w)+b
         y_pred=sigmoid(z)
-        loss=(1/2)*((y_pred-y_true)**2)
+        
         dl_dw=np.round(x*(np.dot(y_pred-y_true,y_pred-(y_pred**2))),5)
         dl_db=np.round(np.dot(y_pred-y_true,y_pred-(y_pred**2)),5)
         return (dl_dw,dl_db)
