@@ -13,11 +13,7 @@ class Solution:
         # return np.round(your_answer, 5)
         m=np.mean(x)
         v=np.var(x)
-        t1=v
-        t2=t1+1e-5
-        t3=t2**0.5
-        t4=(x-m)/t3
-        t5=t4*gamma
-        t6=t5+beta
-        return np.round(t6,5)
+        x_hat=((x-m)/((v+1e-5)**0.5))*gamma + beta
+        x_hat=np.round(x_hat,5)
+        return x_hat
 
