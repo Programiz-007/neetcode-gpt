@@ -7,18 +7,12 @@ class Solution:
         # Implement RMS Normalization (similar to LayerNorm but without mean centering or beta)
         # Normalize x, then scale by gamma
         # Return result rounded to 4 decimal places as a list
-        sum=0
-        for i in range(len(x)):
-            sum=sum+(x[i]**2)
-        s=(1/len(x))*(sum)
-        s=s+eps
-        rms=s**0.5
-        out=gamma
-        for i in range(len(x)):
-            x[i]=x[i]/rms
-            out[i]=out[i]*x[i]
-        
-        return np.round(out,4)
+        x=np.array(x)
+        gamma=np.array(gamma)
+        rms=(eps+np.mean(x**2))**0.5
+        x=x/rms
+        out=np.round(gamma*x,4)
+        return out
         
         
         
