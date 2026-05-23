@@ -12,14 +12,9 @@ class Solution:
         for _ in range(epochs):
             # Forward pass
             y_hat = X @ w + b
-            error = y_hat - y
-
-            # Compute gradients of MSE loss
-            dw = (2.0 / n) * (X.T @ error)
-            db = (2.0 / n) * np.sum(error)
-
-            # Update weights
-            w = w - lr * dw
-            b = b - lr * db
-
+            err=y_hat-y
+            dl_dw=(2.0/n)*(X.T @ err)
+            dl_db=(2.0/n)*np.sum(err)
+            w=w-lr*dl_dw
+            b=b-lr*dl_db
         return (np.round(w, 5), round(float(b), 5))
